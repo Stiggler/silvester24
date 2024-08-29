@@ -1,0 +1,496 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wie schwer kann es sein ein Haus für Silvester zu finden?</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        main {
+            padding: 1em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 0.9em; /* Make the font smaller */
+        }
+
+        th, td {
+            padding: 8px; /* Reduce padding to make the table more compact */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+        }
+
+        .filter-container label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .filter-container select, .filter-container input {
+            padding: 5px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 0.9em; /* Match the table font size */
+        }
+
+        @media screen and (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: right;
+            }
+
+            th {
+                text-align: left;
+                background-color: #f5f5f5;
+            }
+
+            tr {
+                margin-bottom: 15px;
+                border-bottom: 2px solid #ddd;
+            }
+        }
+    </style>
+    <script>
+        function filterTable() {
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("filterInput");
+            filter = input.value.toLowerCase();
+            table = document.getElementById("propertiesTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td");
+                for (j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        function filterBySelect() {
+            var statusSelect, countrySelect, table, tr, td, i, statusFilter, countryFilter, statusTxt, countryTxt;
+            statusSelect = document.getElementById("statusFilter");
+            countrySelect = document.getElementById("countryFilter");
+            statusFilter = statusSelect.value.toLowerCase();
+            countryFilter = countrySelect.value.toLowerCase();
+            table = document.getElementById("propertiesTable");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td");
+                if (td.length > 0) {
+                    statusTxt = td[2].textContent || td[2].innerText;
+                    countryTxt = td[3].textContent || td[3].innerText;
+                    if ((statusTxt.toLowerCase().indexOf(statusFilter) > -1 || statusFilter === "") &&
+                        (countryTxt.toLowerCase().indexOf(countryFilter) > -1 || countryFilter === "")) {
+                        tr[i].style.display = "";
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Wie schwer kann es sein ein Haus für Silvester zu finden?</h1>
+    </header>
+    <main>
+        <div class="filter-container">
+            <label for="filterInput">Search:</label>
+            <input type="text" id="filterInput" onkeyup="filterTable()" placeholder="Search for properties..">
+
+            <label for="statusFilter">Status:</label>
+            <select id="statusFilter" onchange="filterBySelect()">
+                <option value="">All</option>
+<option value="frei">frei</option><option value="ausgebucht">ausgebucht</option>
+            </select>
+
+            <label for="countryFilter">Country:</label>
+            <select id="countryFilter" onchange="filterBySelect()">
+                <option value="">All</option>
+<option value="Italien">Italien</option><option value="Frankreich">Frankreich</option>
+            </select>
+        </div>
+        <table id="propertiesTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>Link</th>
+                    <th>Distance</th>
+                    <th>Bedrooms</th>
+                    <th>Bathrooms</th>
+                    <th>Max People</th>
+                    <th>Price (€)</th>
+                    <th>Price per Person (€)</th>
+                    <th>Fenced</th>
+                    <th>Airport | Distance (min)</th>
+                    <th>Pets</th>
+                    <th>Other</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>Haus 1</td>
+                    <td>Big Private Garden, AC, Swimming Pool, Hot Tub, Huge Play Area, & Great Views</td>
+                    <td>frei</td>
+                    <td>Italien</td>
+                    <td></td>
+                    <td><a href="https://www.fewo-direkt.de/ferienwohnung-ferienhaus/p11171745?chkin=2024-12-26&chkout=2025-01-02&d1=2024-12-26&d2=2025-01-02&startDate=2024-12-26&endDate=2025-01-02&flexibility=2_DAY&srpStartDate=2024-12-28&srpEndDate=2025-01-04&x_pwa=1&rfrr=HSR&pwa_ts=1723730390533&referrerUrl=aHR0cHM6Ly93d3cuZmV3by1kaXJla3QuZGUvSG90ZWwtU2VhcmNo&useRewards=false&adults=10&children=1_0%2C1_1%2C1_1%2C1_4%2C1_7%2C1_8&regionId=174&destination=Schweiz&destType=BOUNDING_BOX&latLong=46.89329%2C9.13953&total_price=0%2C4500&amenities=PETS&bedroom_count_gt=5&house_rules_group=pets_allowed&privacyTrackingState=CAN_TRACK&searchId=f9580d6f-82b7-4d23-b414-446f9cc923b6&us_bathroom_count_gt=3&sort=RECOMMENDED&top_dp=4348&top_cur=EUR&userIntent=&selectedRoomType=89370192&selectedRatePlan=0001a07b912d6191492c88032f18a99f5faf&expediaPropertyId=89370192">View Property</a></td>
+                    <td>08:44:00</td>
+                    <td>9.0</td>
+                    <td>6.0</td>
+                    <td>18</td>
+                    <td>€4348.0</td>
+                    <td>€434.8</td>
+                    <td>?</td>
+                    <td>Pisa | 49</td>
+                    <td>?</td>
+                    <td></td>
+                    <td>Steffen</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 2</td>
+                    <td>3 Charming Gites Sharing Beautiful Pool, Gardens & Games Room Ideal for Families</td>
+                    <td>frei</td>
+                    <td>Frankreich</td>
+                    <td>Saint-Georges-de-Noisné, Deux-Sèvres</td>
+                    <td><a href="https://www.fewo-direkt.de/ferienwohnung-ferienhaus/p11354748?chkin=2024-12-30&chkout=2025-01-06&d1=2024-12-30&d2=2025-01-06&startDate=2024-12-30&endDate=2025-01-06&flexibility=2_DAY&srpStartDate=2024-12-28&srpEndDate=2025-01-04&x_pwa=1&rfrr=HSR&pwa_ts=1723732070716&referrerUrl=aHR0cHM6Ly93d3cuZmV3by1kaXJla3QuZGUvSG90ZWwtU2VhcmNo&useRewards=false&adults=10&children=1_0%2C1_1%2C1_1%2C1_4%2C1_7%2C1_8&regionId=553248626387877575&destination=Bourgogne-Franche-Comt%C3%A9%2C%20Frankreich&destType=BOUNDING_BOX&latLong=47.52525%2C3.35101&total_price=0%2C4500&amenities=PETS&bedroom_count_gt=5&house_rules_group=pets_allowed&privacyTrackingState=CAN_TRACK&searchId=97f88404-053c-4a95-bca7-4dc4611e2509&us_bathroom_count_gt=3&sort=RECOMMENDED&top_dp=4257&top_cur=EUR&userIntent=&selectedRoomType=96168706&selectedRatePlan=0001a266d47783374f7e86c16d96edb62a7d&expediaPropertyId=96168706">View Property</a></td>
+                    <td>08:30:00</td>
+                    <td>8.0</td>
+                    <td>4.0</td>
+                    <td>16</td>
+                    <td>€4257.0</td>
+                    <td>€425.7</td>
+                    <td>teilweise</td>
+                    <td>Niort (NIT) | 46</td>
+                    <td>max 1</td>
+                    <td>3 Häuser</td>
+                    <td>Steffen</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 3</td>
+                    <td>Character house in the countryside with breathtaking views</td>
+                    <td>frei</td>
+                    <td>Frankreich</td>
+                    <td>Mison</td>
+                    <td><a href="https://www.fewo-direkt.de/ferienwohnung-ferienhaus/p2219974a?chkin=2024-12-30&chkout=2025-01-06&d1=2024-12-30&d2=2025-01-06&startDate=2024-12-30&endDate=2025-01-06&flexibility=2_DAY&srpStartDate=2024-12-28&srpEndDate=2025-01-04&x_pwa=1&rfrr=HSR&pwa_ts=1723730964772&referrerUrl=aHR0cHM6Ly93d3cuZmV3by1kaXJla3QuZGUvSG90ZWwtU2VhcmNo&useRewards=false&adults=10&children=1_0%2C1_1%2C1_1%2C1_4%2C1_7%2C1_8&regionId=86&destination=Italien&destType=BOUNDING_BOX&latLong=44.69535%2C9.93887&total_price=0%2C4500&amenities=PETS&bedroom_count_gt=5&house_rules_group=pets_allowed&privacyTrackingState=CAN_TRACK&searchId=1f0037f9-e13d-4710-9205-e0384cc2dea2&us_bathroom_count_gt=3&sort=RECOMMENDED&top_dp=2063&top_cur=EUR&userIntent=&selectedRoomType=91534232&selectedRatePlan=0003d32c119680b545879354413d71c66f98&expediaPropertyId=91534232">View Property</a></td>
+                    <td>07:33:00</td>
+                    <td>6.0</td>
+                    <td>3.0</td>
+                    <td>17</td>
+                    <td>€2063.0</td>
+                    <td>€206.3</td>
+                    <td></td>
+                    <td>Marseille | 84</td>
+                    <td>2</td>
+                    <td></td>
+                    <td>Steffen</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 4</td>
+                    <td>Unabhängiges Haus mit großem Garten im Grünen der Alta Langa</td>
+                    <td>frei</td>
+                    <td>Italien</td>
+                    <td></td>
+                    <td><a href="https://www.fewo-direkt.de/ferienwohnung-ferienhaus/p9170948?chkin=2024-12-28&chkout=2025-01-04&d1=2024-12-28&d2=2025-01-04&startDate=2024-12-28&endDate=2025-01-04&flexibility=2_DAY&srpStartDate=2024-12-28&srpEndDate=2025-01-04&x_pwa=1&rfrr=HSR&pwa_ts=1723730390578&referrerUrl=aHR0cHM6Ly93d3cuZmV3by1kaXJla3QuZGUvSG90ZWwtU2VhcmNo&useRewards=false&adults=10&children=1_0%2C1_1%2C1_1%2C1_4%2C1_7%2C1_8&regionId=174&destination=Schweiz&destType=BOUNDING_BOX&latLong=46.89329%2C9.13953&total_price=0%2C4500&amenities=PETS&bedroom_count_gt=5&house_rules_group=pets_allowed&privacyTrackingState=CAN_TRACK&searchId=f9580d6f-82b7-4d23-b414-446f9cc923b6&us_bathroom_count_gt=3&sort=RECOMMENDED&top_dp=3934&top_cur=EUR&userIntent=&selectedRoomType=42060300&selectedRatePlan=0000a613bf9e197d433991d5f026514d623b&expediaPropertyId=42060300">View Property</a></td>
+                    <td>07:28:00</td>
+                    <td>5.0</td>
+                    <td>3.0</td>
+                    <td>17</td>
+                    <td>€3934.0</td>
+                    <td>€393.4</td>
+                    <td>yes</td>
+                    <td>Cuneo | 84</td>
+                    <td></td>
+                    <td>2 Wohnungen</td>
+                    <td>Steffen</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 5</td>
+                    <td>Grande Maison Familiale à la Campagne Idéale Avec Enfants et Adolescents</td>
+                    <td>frei</td>
+                    <td>Frankreich</td>
+                    <td>Arzilhac ,Beaux, Haute-Loire</td>
+                    <td><a href="https://www.fewo-direkt.de/ferienwohnung-ferienhaus/p2345415a?chkin=2024-12-30&chkout=2025-01-06&d1=2024-12-30&d2=2025-01-06&startDate=2024-12-30&endDate=2025-01-06&flexibility=2_DAY&srpStartDate=2024-12-28&srpEndDate=2025-01-04&x_pwa=1&rfrr=HSR&pwa_ts=1723731558667&referrerUrl=aHR0cHM6Ly93d3cuZmV3by1kaXJla3QuZGUvSG90ZWwtU2VhcmNo&useRewards=false&adults=10&children=1_0%2C1_1%2C1_1%2C1_4%2C1_7%2C1_8&regionId=86&destination=Italien&destType=BOUNDING_BOX&latLong=45.89745%2C7.54156&total_price=0%2C4500&amenities=PETS&bedroom_count_gt=5&house_rules_group=pets_allowed&privacyTrackingState=CAN_TRACK&searchId=51e269ff-b125-4d8a-9144-e416e621ba83&us_bathroom_count_gt=3&sort=RECOMMENDED&top_dp=3067&top_cur=EUR&userIntent=&selectedRoomType=101369433&selectedRatePlan=00039f943b1d12d048dbb62d02aeac82405f&expediaPropertyId=101369433">View Property</a></td>
+                    <td>06:17:00</td>
+                    <td>7.0</td>
+                    <td>3.5</td>
+                    <td>16</td>
+                    <td>€3067.0</td>
+                    <td>€306.7</td>
+                    <td></td>
+                    <td>Le Puy-en-Velay | 45</td>
+                    <td></td>
+                    <td></td>
+                    <td>Steffen</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 6</td>
+                    <td>Luxury Villa Eleganza with pool, SPA, hot tub, huge dayroom, garden, barbecue</td>
+                    <td>ausgebucht</td>
+                    <td>Italien</td>
+                    <td>Dalmine, Provincia di Bergamo</td>
+                    <td><a href="https://www.fewo-direkt.de/ferienwohnung-ferienhaus/p4012807vb?chkin=2024-12-28&chkout=2025-01-04&d1=2024-12-28&d2=2025-01-04&startDate=2024-12-28&endDate=2025-01-04&flexibility=2_DAY&srpStartDate=2024-12-28&srpEndDate=2025-01-04&x_pwa=1&rfrr=HSR&pwa_ts=1723730390574&referrerUrl=aHR0cHM6Ly93d3cuZmV3by1kaXJla3QuZGUvSG90ZWwtU2VhcmNo&useRewards=false&adults=10&children=1_0%2C1_1%2C1_1%2C1_4%2C1_7%2C1_8&regionId=174&destination=Schweiz&destType=BOUNDING_BOX&latLong=46.89329%2C9.13953&total_price=0%2C4500&amenities=PETS&bedroom_count_gt=5&house_rules_group=pets_allowed&privacyTrackingState=CAN_TRACK&searchId=f9580d6f-82b7-4d23-b414-446f9cc923b6&us_bathroom_count_gt=3&sort=RECOMMENDED&top_dp=4193&top_cur=EUR&userIntent=&selectedRoomType=105376598&selectedRatePlan=0004d650dfb4b8f34e628aa875b3908821e5&expediaPropertyId=105376598">View Property</a></td>
+                    <td>06:08:00</td>
+                    <td>7.0</td>
+                    <td>6.0</td>
+                    <td>16</td>
+                    <td>€4193.0</td>
+                    <td>€419.3</td>
+                    <td></td>
+                    <td>Bergamo | 23</td>
+                    <td></td>
+                    <td></td>
+                    <td>Steffen</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 7</td>
+                    <td>Vrbo Property</td>
+                    <td>frei</td>
+                    <td>Frankreich</td>
+                    <td>Annonay</td>
+                    <td><a href="https://www.fewo-direkt.de/ferienwohnung-ferienhaus/p2143971a?chkin=2024-12-30&chkout=2025-01-06&d1=2024-12-30&d2=2025-01-06&startDate=2024-12-30&endDate=2025-01-06&flexibility=2_DAY&srpStartDate=2024-12-28&srpEndDate=2025-01-04&x_pwa=1&rfrr=HSR&pwa_ts=1723731558675&referrerUrl=aHR0cHM6Ly93d3cuZmV3by1kaXJla3QuZGUvSG90ZWwtU2VhcmNo&useRewards=false&adults=10&children=1_0%2C1_1%2C1_1%2C1_4%2C1_7%2C1_8&regionId=86&destination=Italien&destType=BOUNDING_BOX&latLong=45.89745%2C7.54156&total_price=0%2C4500&amenities=PETS&bedroom_count_gt=5&house_rules_group=pets_allowed&privacyTrackingState=CAN_TRACK&searchId=51e269ff-b125-4d8a-9144-e416e621ba83&us_bathroom_count_gt=3&sort=RECOMMENDED&top_dp=4149&top_cur=EUR&userIntent=&selectedRoomType=82988507&selectedRatePlan=00036ab5291fc32449f296f514002d4e888f&expediaPropertyId=82988507">View Property</a></td>
+                    <td>06:00:00</td>
+                    <td>7.0</td>
+                    <td>5.0</td>
+                    <td>16</td>
+                    <td>€4149.0</td>
+                    <td>€414.9</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>wenig Bilder</td>
+                    <td>Steffen</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 8</td>
+                    <td>Gasthaus Croizet-sur-Gand, 5 Schlafzimmer, 13 Personen</td>
+                    <td>frei</td>
+                    <td>Frankreich</td>
+                    <td>Croizet-sur-Gand</td>
+                    <td><a href="https://www.fewo-direkt.de/ferienwohnung-ferienhaus/p1785806a?regionId=553248626387877575&chkin=2024-12-28&chkout=2025-01-04&useRewards=false&adults=8&children=1_1%2C1_1%2C1_4%2C1_8%2C1_7">View Property</a></td>
+                    <td>05:33:00</td>
+                    <td>5.0</td>
+                    <td>5.0</td>
+                    <td>13</td>
+                    <td>€2398.0</td>
+                    <td>€239.8</td>
+                    <td>yes</td>
+                    <td>Lyon | 75min</td>
+                    <td>ja</td>
+                    <td></td>
+                    <td>Steffen</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 9</td>
+                    <td>Villa al Lago-Traumseesicht-riesiger Garten-Strand</td>
+                    <td>frei</td>
+                    <td>Italien</td>
+                    <td>Villaggio Belmonte, Lombardei, Italien</td>
+                    <td><a href="https://www.airbnb.de/rooms/41654926?pets=3&viralityEntryPoint=1&unique_share_id=1A807FEB-1ED3-4520-B692-1AF7B99A6BC8&slcid=714869e437b947f5a719ddb8fc1c872d&infants=3&adults=12&channel=native&s=76&feature=share&children=3&slug=KgUX8xjT&source_impression_id=p3_1724586247_P3C3xGs3Xj8WfnfM&guests=15&check_in=2024-12-28&check_out=2025-01-04">View Property</a></td>
+                    <td>05:23:00</td>
+                    <td>7.0</td>
+                    <td>3.0</td>
+                    <td>18</td>
+                    <td>€4661.0</td>
+                    <td>€466.1</td>
+                    <td>?</td>
+                    <td></td>
+                    <td>ja</td>
+                    <td></td>
+                    <td>Franni</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 10</td>
+                    <td>Villa Incanta - Casa da Suite</td>
+                    <td>frei</td>
+                    <td>Italien</td>
+                    <td>Stresa, Piemonte</td>
+                    <td><a href="https://www.airbnb.de/rooms/665337166861448425?pets=2&viralityEntryPoint=1&unique_share_id=1886A81E-BDF0-4921-9F9E-DE7B57037BE3&slcid=f7e3a82bd1fa4d2cbc441347ab7f80e3&infants=2&adults=10&check_in=2024-12-29&channel=native&check_out=2025-01-03&s=76&feature=share&children=2&slug=ExPrYsp8&source_impression_id=p3_1724586946_P3mfKF1llYmKgpc7">View Property</a></td>
+                    <td>06:00:00</td>
+                    <td>6.0</td>
+                    <td>6.5</td>
+                    <td>12 (Erwachsene)</td>
+                    <td>€5388.0</td>
+                    <td>€538.8</td>
+                    <td></td>
+                    <td></td>
+                    <td>ja</td>
+                    <td></td>
+                    <td>Franni</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 11</td>
+                    <td>Villa in Genestelle, Frankreich</td>
+                    <td>frei</td>
+                    <td>Frankreich</td>
+                    <td>Genestelle, Auvergne-Rhône-Alpes</td>
+                    <td><a href="https://www.airbnb.de/rooms/16228970?adults=10&children=2&infants=3&pets=2&wishlist_item_id=11003908496343&check_in=2024-12-28&check_out=2025-01-04&source_impression_id=p3_1724587201_P3p6J9Vp10IbTfPC&previous_page_section_name=1000">View Property</a></td>
+                    <td>07:06:00</td>
+                    <td>6.0</td>
+                    <td>6.0</td>
+                    <td>18</td>
+                    <td>€4995.0</td>
+                    <td>€499.5</td>
+                    <td></td>
+                    <td></td>
+                    <td>ja</td>
+                    <td></td>
+                    <td>Domi</td>
+                </tr>
+    
+                <tr>
+                    <td>Haus 12</td>
+                    <td>Villa in Le Thor, Frankreich</td>
+                    <td>frei</td>
+                    <td>Frankreich</td>
+                    <td>Le Thor, 84250, Frankreich</td>
+                    <td><a href="https://www.airbnb.de/rooms/649711354640415573?adults=10&children=2&infants=3&pets=2&wishlist_item_id=11003908416053&check_in=2024-12-28&check_out=2025-01-04&source_impression_id=p3_1724587485_P32Y8ftXNfyfx22B&previous_page_section_name=1000">View Property</a></td>
+                    <td>07:17:00</td>
+                    <td>7.0</td>
+                    <td>7.0</td>
+                    <td>18</td>
+                    <td>€5071.0</td>
+                    <td>€507.1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+    
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="">View Property</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>€</td>
+                    <td>€</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+    
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="">View Property</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>€</td>
+                    <td>€</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+    
+                <tr>
+                    <td></td>
+                    <td>,</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="">View Property</a></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>€</td>
+                    <td>€</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+    
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>
