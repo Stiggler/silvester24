@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav .logo {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+nav .menu-icon {
+    display: none;
+}
+
+nav .nav-menu {
+    display: flex;
+    list-style: none;
+}
+
+nav .nav-menu li {
+    margin-left: 20px;
+}
+
+nav .nav-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav .nav-menu li a:hover {
+    text-decoration: underline;
+}
+
+.banner {
+    max-width: 100%;
+    height: auto;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+.filter-section {
+    background-color: white;
+    padding: 1em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.filter-container label {
+    flex-basis: 100%;
+    font-weight: bold;
+}
+
+.filter-container input,
+.filter-container select {
+    flex: 1;
+    min-width: 200px;
+}
+
+.table-section {
+    overflow-x: auto;
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+td img {
+    width: 50px;
+    height: auto;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    nav .nav-menu {
+        display: none;
+        flex-direction: column;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+    }
+
+    nav .menu-icon {
+        display: block;
+        cursor: pointer;
+    }
+
+    nav #menu-toggle:checked + .menu-icon + .nav-menu {
+        display: flex;
+    }
+
+    .filter-container {
+        flex-direction: column;
+    }
+}
